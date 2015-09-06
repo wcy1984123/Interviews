@@ -29,7 +29,7 @@ public class Solution {
             int localMax = t[i - 1][0] - prices[0];
             for (int j = 1; j < len; j++) {
                 t[i][j] = Math.max(t[i][j - 1], prices[j] + localMax);
-                localMax =  Math.max(localMax, t[i - 1][j] - prices[j]);
+                localMax = Math.max(localMax, t[i - 1][j] - prices[j]);
             }
         }
         return t[k][len - 1];

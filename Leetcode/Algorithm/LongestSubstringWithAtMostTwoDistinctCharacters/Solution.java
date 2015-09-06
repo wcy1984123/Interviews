@@ -21,7 +21,7 @@ public class Solution {
         if (s ==  null || s.length() == 0) return 0;
 
         int first = 0; //记录至多两个不同字符的字符串的开始位置
-        int second = -1; // 记录第二个不用的字符的位置
+        int second = -1; // 记录第一个不用的字符的最后位置
         int max = 0;
 
         for (int i = 1; i < s.length(); i++) {

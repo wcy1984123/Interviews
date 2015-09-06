@@ -64,6 +64,7 @@ public class Iterative {
                 queue.offer(node.left);
                 nextLevel = node.left;
             }
+
             if (node.right != null) {
                 queue.offer(node.right);
                 nextLevel = node.right;

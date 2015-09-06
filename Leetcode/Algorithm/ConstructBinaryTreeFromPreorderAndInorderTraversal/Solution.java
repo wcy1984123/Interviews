@@ -35,6 +35,7 @@ public class Solution {
         int preEnd = preorder.length-1;
         return buildTree(inorder, inStart, inEnd, preorder, preStart, preEnd);
     }
+
     public TreeNode buildTree(int[] inorder, int inStart, int inEnd,
                               int[] preorder, int preStart, int preEnd){
         if(inStart > inEnd || preStart > preEnd)

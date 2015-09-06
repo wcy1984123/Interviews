@@ -40,8 +40,6 @@ public class Solution {
             carry=(num1+num2+carry)/2;
 
             sb.insert(0, current);
-
-
         }
         return sb.toString();
     }
