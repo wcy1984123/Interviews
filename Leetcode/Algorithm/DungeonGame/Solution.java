@@ -1,7 +1,12 @@
 package DungeonGame;
 
+
 /**
- * Created by wangchiying on 3/17/15.
+ * Project: Interviews
+ * Package: DivideTwoIntegers
+ * Date: 17/Mar/2015
+ * Time: 23:22
+ * System Time: 11:22 PM
  */
 
 /*
