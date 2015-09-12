@@ -1,8 +1,8 @@
-package MajorityElement;
+package MajorityElementI;
 
 /**
  * Project: Interviews
- * Package: MajorityElement
+ * Package: MajorityElementI
  * Date: 16/Mar/2015
  * Time: 15:57
  * System Time: 3:57 PM
