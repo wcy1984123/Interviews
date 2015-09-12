@@ -18,25 +18,33 @@ package HIndexII;
 
 public class Solution {
     public int hIndex(int[] citations) {
-        int len = citations.length;
 
-        int first = 0;
-        int mid;
-        int count = len;
-        int step;
+        if (citations.length == 0)
+            return 0;
+        else if (citations.length == 1) {
+            if (citations[0] == 0)
+                return 0;
+            else
+                return 1;
+        }
 
-        while (count > 0) {
-            step = count / 2;
-            mid = first + step;
-            if (citations[mid] < len - mid) {
-                first = mid + 1;
-                count -= (step + 1);
-            }
-            else {
-                count = step;
+        int n = citations.length;
+        if (n <= citations[0]) // tricky optimization
+            return n;
+
+        int l = 1;
+        int r = n;
+
+        while (l < r) {
+            int m = l + (r - l) / 2;
+
+            if (n - m <= citations[m]) {
+                r = m;
+            } else {
+                l = m + 1;
             }
         }
 
-        return len - first;
+        return n - r;
     }
 }
