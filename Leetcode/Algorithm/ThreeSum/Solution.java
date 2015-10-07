@@ -111,4 +111,12 @@ public class Solution {
         return result;
     }
 
+    public static void main(String[] args) {
+        int x = 0;
+        int y = x++;
+        System.out.println("x = " + x + " y = " + y);
+        y = x++;
+        System.out.println("x = " + x + " y = " + y);
+    }
+
 }

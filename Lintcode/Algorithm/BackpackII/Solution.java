@@ -29,6 +29,7 @@ public class Solution {
         int len = A.length;
         if (len==0) return -1;
 
+        // maxVal[i][j]表示在容量为j的背包里在0至i的items所能包含的最大value
         int[][] maxVal = new int[len+1][m+1];
         for (int i=0;i<=m;i++) maxVal[0][i]=0;
 
