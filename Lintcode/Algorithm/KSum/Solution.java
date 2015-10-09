@@ -25,8 +25,12 @@ public class Solution {
      * @param target: a integer
      * @return an integer
      */
+
+    // http://www.cnblogs.com/EdwardLiu/p/4319669.html
     public int  kSum(int A[], int k, int target) {
         if (A.length<k) return 0;
+
+        // d[i][j][k]表示从前j个elements中选出i个数，这i个数的和是k
         int[][][] d = new int[k+1][A.length+1][target+1];
         for (int i=1;i<=A.length;i++)
             if (A[i-1]<=target){
