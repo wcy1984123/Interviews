@@ -31,7 +31,7 @@ public class Solution {
      *@return: A string
      */
     public String DeleteDigits(String A, int k) {
-        // write your code here
+        // st中从 bottom 到 top，value 逐渐增加
         Stack<Integer> st = new Stack<Integer>();
         int popCount = 0; // record how many digits we have deleted.
         StringBuffer res = new StringBuffer(); // save the final result

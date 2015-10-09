@@ -66,7 +66,7 @@ class Solution {
                 res = res.length() == 0? res + s: res + "," + s;
 
                 if (node != null) {
-                    // for each level, if there is at least one non-left node, end would beome false;
+                    // for each level, if there is at least one non-left node, end would become false;
                     if (!isLeaf(node)) end = false;
                     nextlevel.offer(node.left);
                     nextlevel.offer(node.right);

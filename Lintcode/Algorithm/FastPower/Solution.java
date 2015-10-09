@@ -12,9 +12,9 @@ package FastPower;
     Calculate the an % b where a, b and n are all 32bit integers.
 
     Example
-    For 231 % 3 = 2
+    For 2^31 % 3 = 2
 
-    For 1001000 % 1000 = 0
+    For 100^1000 % 1000 = 0
 
     Challenge
     O(logn)
@@ -29,10 +29,8 @@ public class Solution {
         // write your code here
         // ab mod n = ((a mod n)(b mod n)) mod n
         // Similar to the power problem in Leetcode.
-        // when halving the power should
-        // consider the even and odd case.
-        // If its odd case, should update the mod equation
-        // accordingly.
+        // when halving the power, should consider the even and odd case.
+        // If its odd case, should update the mod equation accordingly.
         if (n <= 1) {
             return (int)Math.pow(a, n) % b;
         }

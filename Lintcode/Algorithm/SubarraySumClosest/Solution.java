@@ -58,7 +58,7 @@ public class Solution {
 }
 
 class Element implements Comparable<Element>{
-    int index;
+    int index; // 到 index 位置的 element 的和的 value
     int value;
     public Element(int i, int v){
         index = i;
