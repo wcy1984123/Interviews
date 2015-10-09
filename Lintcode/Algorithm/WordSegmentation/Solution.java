@@ -49,6 +49,7 @@ public class Solution {
 
         // normal method
         boolean[] d = new boolean[s.length()+1];
+        // d[j] 表示从0到j的 string 可以用 dict 里面的 word 表示
         Arrays.fill(d, false);
         d[0] = true;
         for (int i=1;i<=s.length();i++){

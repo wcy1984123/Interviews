@@ -43,6 +43,8 @@ public class Solution {
             } else if (map.containsKey(x)) {
                 map.put(x, map.get(x) + 1);
             } else {
+
+                // 删除一个count,用新的map代替旧的map
                 Map<Integer, Integer> tmp = new HashMap<Integer, Integer>();
                 for (int key : map.keySet()) {
                     if (map.get(key) > 1) {

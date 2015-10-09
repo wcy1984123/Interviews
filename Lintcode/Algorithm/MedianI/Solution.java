@@ -74,6 +74,6 @@ public class Solution {
             return p;
         }
 
-        return - 1;
+        return -1;
     }
 }
