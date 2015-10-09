@@ -54,12 +54,14 @@ public class Solution {
             // [2 -2 4 -1 -3 5 6]
             // [2 -2 4 -1 5 -3 6]
             if (flag) {
+                // 把负数放在前面，正数放在后面
                 if (arr[j] < 0)
                 {
                     i++;
                     swap(arr, i, j);
                 }
             } else {
+                // 把正数放在前面，负数放在后面
                 if (arr[j] > 0)
                 {
                     i++;

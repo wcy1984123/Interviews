@@ -55,7 +55,7 @@ class Solution {
         String res = "";
         Queue<TreeNode> level = new LinkedList<TreeNode>();
         level.offer(root);
-        boolean end = false; // it indicates whether it reaches the left node
+        boolean end = false; // it indicates whether it reaches the leaf node
 
         while (!end) {
             end = true;
@@ -66,7 +66,7 @@ class Solution {
                 res = res.length() == 0? res + s: res + "," + s;
 
                 if (node != null) {
-                    // for each level, if there is at least one non-left node, end would become false;
+                    // for each level, if there is at least one non-leaf node, end would become false;
                     if (!isLeaf(node)) end = false;
                     nextlevel.offer(node.left);
                     nextlevel.offer(node.right);
