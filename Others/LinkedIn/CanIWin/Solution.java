@@ -32,8 +32,7 @@ public class Solution {
     Result canIWinsub(List<Integer> numberPool, int index, int target) {
         if(target <= 0) return Result.Lose;
 
-        for(int i = index; i < numberPool.size(); i++)
-        {
+        for(int i = index; i < numberPool.size(); i++) {
             int data = numberPool.get(i);
 
             // permutate each possible case by twice swap operations
