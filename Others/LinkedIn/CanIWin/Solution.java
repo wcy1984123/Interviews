@@ -1,6 +1,8 @@
 package CanIWin;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Project: Interviews
@@ -20,8 +22,10 @@ public class Solution {
 
     Result canIWin(List<Integer> numberPool, int target) {
         int sum=0;
+
         for(int i=0;i<numberPool.size();i++) sum += numberPool.get(i);
         if(sum<target) return Result.Draw;
+
         return canIWinsub(numberPool, 0, target);
     }
 
@@ -31,10 +35,21 @@ public class Solution {
         for(int i = index; i < numberPool.size(); i++)
         {
             int data = numberPool.get(i);
-            if(canIWinsub(numberPool, i + 1, target - data) == Result.Lose) return Result.Win;
+
+            // permutate each possible case by twice swap operations
+            swap(numberPool, index, i);
+            if(canIWinsub(numberPool, index + 1, target - data) == Result.Lose) return Result.Win;
+            swap(numberPool, index, i);
         }
 
         return Result.Lose;
     }
+
+    private void swap(List<Integer> numberPool, int i, int j) {
+        int temp = numberPool.get(i);
+        numberPool.set(i, numberPool.get(j));
+        numberPool.set(j, temp);
+    }
 }
+
 
