@@ -25,23 +25,37 @@ public class Solution {
      */
     public String serialize(TreeNode root) {
         // write your code here
+        // write your code here
         if (root == null) return "#";
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        queue.offer(root);
-        StringBuffer sb = new StringBuffer();
 
-        while(!queue.isEmpty()) {
-            TreeNode node = queue.poll();
-            sb.append(node.val);
+        String res = "";
+        Queue<TreeNode> level = new LinkedList<TreeNode>();
+        level.offer(root);
+        boolean end = false; // it indicates whether it reaches the leaf node
 
-            if (node.left != null) queue.offer(node.left);
-            else sb.append("#");
+        while (!end) {
+            end = true;
+            Queue<TreeNode> nextlevel = new LinkedList<TreeNode>();
+            while(!level.isEmpty()) {
+                TreeNode node = level.poll();
+                String s = node == null? "#": node.val + "";
+                res = res.length() == 0? res + s: res + "," + s;
 
-            if (node.right != null) queue.offer(node.right);
-            else sb.append("#");
+                if (node != null) {
+                    // for each level, if there is at least one non-left node, end would beome false;
+                    if (!isLeaf(node)) end = false;
+                    nextlevel.offer(node.left);
+                    nextlevel.offer(node.right);
+                }
+            }
+
+            level = nextlevel;
         }
+        return res;
+    }
 
-        return sb.toString();
+    private boolean isLeaf(TreeNode node) {
+        return node.left == null && node.right == null;
     }
 
     /**
@@ -53,35 +67,34 @@ public class Solution {
      */
     public TreeNode deserialize(String data) {
         // write your code here
-        TreeNode root = null;
-        if (data.equals("#")) return root;
-        int index = 0;
-        int length = data.length();
+        // write your code here
+        if (data == null || data.length() == 0) return null;
+        if (data.equals("#")) return null;
 
-        int val = data.charAt(index) - '0';
-        root = new TreeNode(val);
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        queue.offer(root);
+        // split encodes
+        String[] strs = data.split(",");
+        int len = strs.length;
+        TreeNode root = new TreeNode(Integer.parseInt(strs[0]));
+        Queue<TreeNode> level = new LinkedList<TreeNode>();
+        level.offer(root);
 
-        while(!queue.isEmpty()) {
-            TreeNode node = queue.poll();
-            if (2 * index < length && data.charAt(2 * index) != '#') {
-                TreeNode left = new TreeNode(data.charAt(2 * index) - '0');
-                node.left = left;
-                queue.offer(left);
-            } else {
-                break;
+        // decode using two queues
+        int i = 1;
+        while (!level.isEmpty()) {
+            Queue<TreeNode> nextlevel = new LinkedList<TreeNode>();
+            if (i >= len) break; // no data to be decoded
+            while(!level.isEmpty()) {
+                //TreeNode temp = parents.removeFirst();
+                TreeNode node = level.poll();
+                node.left = strs[i].equals("#")? null: new TreeNode(Integer.parseInt(strs[i]));
+                i++;
+                node.right = strs[i].equals("#")? null: new TreeNode(Integer.parseInt(strs[i]));
+                i++;
+                if (node.left != null) nextlevel.offer(node.left);
+                if (node.right != null) nextlevel.offer(node.right);
             }
 
-            if (2 * index + 1 < length && data.charAt(2 * index + 1) != '#') {
-                TreeNode right = new TreeNode(data.charAt(2 * index + 1) - '0');
-                node.right = right;
-                queue.offer(right);
-            } else {
-                break;
-            }
-
-            index += 2;
+            level = nextlevel;
         }
 
         return root;
