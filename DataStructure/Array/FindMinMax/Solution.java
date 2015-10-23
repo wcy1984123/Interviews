@@ -72,7 +72,7 @@ public class Solution {
     }
 
     //-------------------------------- 2.Tournament Solution ----------------------------------//
-    pair getMinMaxRecursiveVersion(int arr[], int low, int high)
+    pair getMinMaxRecursiveVersion(int arr[], int low, int high) // O(nlogn)
     {
         pair minmax = new pair();
         pair mml;

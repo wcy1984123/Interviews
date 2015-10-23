@@ -18,7 +18,8 @@ import java.util.*;
 public class Solution {
 
     public static boolean isOneEditDistance(Scanner a, Scanner b) {
-        boolean isSame = true, isChanged = false, isAdd = false, isRemove = false;
+        boolean isSame = true, isChanged = false;
+        boolean isAdd = false, isRemove = false; // isAdd 是对于a 的，isRemove是对于b 的
         boolean addRemoveFlag = false;
         boolean changeFlag = false;
         int prevA = 0, prevB = 0, curA = 0, curB = 0;
@@ -35,15 +36,15 @@ public class Solution {
                 }
 
                 // maintain change
-                if (!changeFlag) {
+                if (!changeFlag) { // 第一次需要 change
                     changeFlag = true;
                     isChanged = true;
                 } else {
-                    isChanged = false;
+                    isChanged = false; // 说明是至少是第二次要 change
                 }
 
                 // maintain add or insert
-                if (!addRemoveFlag) {
+                if (!addRemoveFlag) { // 说明是第一次需要 add 或者 remove
                     addRemoveFlag = true;
                     isAdd = true;
                     isRemove = true;
@@ -56,10 +57,13 @@ public class Solution {
                 isAdd = isAdd && (curA == prevB);
                 isRemove = isRemove && (curB == prevA);
             }
+
+            // 如果两个 string 不相等，或者需要改变的次数多于一，或者
             if (!(isSame || isChanged || isAdd || isRemove)) {
                 return false;
             }
         }
+
         if (a.hasNext()) {
             int taila = Integer.parseInt(a.next());
             return (isSame || (isAdd && taila == curB)) && !a.hasNext();

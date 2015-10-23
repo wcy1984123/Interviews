@@ -12,7 +12,7 @@ import java.util.HashSet;
  */
 
 /*
-    Given a dictionary of wrods,find the pair of word with following property:
+    Given a dictionary of words,find the pair of word with following property:
     1,the two word don't have same letter.
     2,the multiple of the two word's length is maximum.
     i give a simple O(n*n*k)(k is the average length of word) method.but i think there will be better one .

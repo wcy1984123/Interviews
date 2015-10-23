@@ -51,6 +51,8 @@ public class Solution {
         List<Integer> pair = input.get(count);
 
         for (int i = pair.get(0); i <= pair.get(1); i++) {
+
+            // if the condition holds, the produced number is at ascending sort.
             if (partialres.size() == 0 || i >= partialres.get(partialres.size() - 1)) {
                 partialres.add(i);
                 producePairsNum(input, count + 1, partialres);
