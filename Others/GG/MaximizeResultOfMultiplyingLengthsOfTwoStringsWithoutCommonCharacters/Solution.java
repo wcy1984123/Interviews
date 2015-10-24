@@ -25,7 +25,7 @@ import java.util.HashSet;
     General Idea:
     1. Sort words
     2. Build a boolean 2D table where row corresponds to a letter and column to a word in the dictionary.
-        Mark an element[c][w] true if the word contains the word w contain letter c.
+        Mark an element[c][w] true if the word contains letter c.
     3. Iterate over each row of the 2D table to construct, for each letter, a set of words that do not contain the letter.
     4. Iterate over the dictionary words in decreasing order. For each word, find the intersections of the sets computed in step 3 that correspond to the letters of this word.
         Then, multiply the length of the current word with the largest word in the intersection.
@@ -75,6 +75,7 @@ public class Solution {
         for(int w = n-1; w >=0 ; w--){
             String word = words[w];
             int wLen = word.length();
+            // 因为 words 是按照从大到小排序了，如果此时的 words 的长度的平方小于 max，就不用再去更小的 word 里面找了，这是 optimize
             if(wLen*wLen < max) break;
             if(wLen == 0){
                 if(max < 0) max = 0;
@@ -85,14 +86,17 @@ public class Solution {
 
             // calculate the words with no common shares with the given word
             for(int i =1 ; i < wLen ; i++){
+                // 求所有 set 的共同 set
                 currentSet.retainAll(absenceSets[charToIndex(word.charAt(i)) ]);
             }
 
-
+            // 找所有 word 里面的 length 最长的 word
             int largestSize = -1;
             for(String otherWord: currentSet){
                 if(otherWord.length() > largestSize) largestSize = otherWord.length();
             }
+
+            // 查看当前的 max length
             int mult = wLen * largestSize;
             if(mult > max) max = mult;
 
