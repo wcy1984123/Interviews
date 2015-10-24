@@ -41,6 +41,7 @@ public class Solution {
                 else stack.peek().left = newNode;
                 stack.push(newNode);
             } else {
+                // it is ')'
                 stack.pop();
             }
         }

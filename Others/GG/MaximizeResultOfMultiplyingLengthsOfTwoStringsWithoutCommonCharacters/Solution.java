@@ -15,7 +15,7 @@ import java.util.HashSet;
     Given a dictionary of words,find the pair of word with following property:
     1,the two word don't have same letter.
     2,the multiple of the two word's length is maximum.
-    i give a simple O(n*n*k)(k is the average length of word) method.but i think there will be better one .
+    I give a simple O(n*n*k)(k is the average length of word) method.but i think there will be better one .
 
     From: http://www.careercup.com/question?id=4951409057333248
           http://stackoverflow.com/questions/20136343/how-to-maximize-the-result-of-multiplying-lengths-of-the-two-strings-without-com
