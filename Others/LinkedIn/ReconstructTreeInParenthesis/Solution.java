@@ -34,14 +34,17 @@ public class Solution {
         if(str.length() < 3) return null;
         Stack<TreeNode> stack = new Stack<TreeNode>();
         stack.push(new TreeNode(str.charAt(1) - '0'));
-        for(i = 2; i < str.length() - 1; i++)
+        for(i = 2; i < str.length() - 1; i++) {
             if(str.charAt(i) == '('){
                 TreeNode newNode = new TreeNode(str.charAt(++i));
                 if (stack.peek().left != null) stack.peek().right = newNode;
                 else stack.peek().left = newNode;
                 stack.push(newNode);
+            } else {
+                stack.pop();
             }
-            else stack.pop();
+        }
+
         return stack.pop();
     }
 }

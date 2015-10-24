@@ -24,12 +24,12 @@ import java.util.HashSet;
 /*
     General Idea:
     1. Sort words
-    2. Build a boolean 2D table where row corresponds to a letter and column to a word in the dictrionary.
+    2. Build a boolean 2D table where row corresponds to a letter and column to a word in the dictionary.
         Mark an element[c][w] true if the word contains the word w contain letter c.
-    3. Iterate over each row of the 2D table to contruct, for each letter, a set of words that do not contain the letter.
-    4. Iterate over the disctionary words in decreasing order. For each word, find the intersections of the sets computed in step 3 that correspond to the letters of this word.
+    3. Iterate over each row of the 2D table to construct, for each letter, a set of words that do not contain the letter.
+    4. Iterate over the dictionary words in decreasing order. For each word, find the intersections of the sets computed in step 3 that correspond to the letters of this word.
         Then, multiply the length of the current word with the largest word in the intersection.
-        Remember the result if is greater than previous maximum.
+        Remember the result if it is greater than previous maximum.
     5. Repeat step 4 until the length of the current word is smaller than the square root of the previous maximum.
 
     The overall complexity is roughly O(nlogn + m * S), where m is the overall number of letters in the dictionary and S is the average size of a set computed in step 3.
