@@ -19,7 +19,6 @@ public class MergeSortForkJoin {
         forkJoinPool.invoke(new MergeSortTask<T>(a, helper, 0, a.length-1));
     }
 
-
     private static class MergeSortTask<T extends Comparable<? super T>> extends RecursiveAction{
         private static final long serialVersionUID = -749935388568367268L;
         private final T[] a;
@@ -33,6 +32,7 @@ public class MergeSortForkJoin {
             this.lo = lo;
             this.hi = hi;
         }
+
         @Override
         protected void compute() {
             if (lo>=hi) return;
@@ -41,9 +41,8 @@ public class MergeSortForkJoin {
             MergeSortTask<T> right = new MergeSortTask<>(a, helper, mid+1, hi);
             invokeAll(left, right);
             merge(this.a, this.helper, this.lo, mid, this.hi);
-
-
         }
+
         private void merge(T[] a, T[] helper, int lo, int mid, int hi){
             for (int i=lo;i<=hi;i++){
                 helper[i]=a[i];
