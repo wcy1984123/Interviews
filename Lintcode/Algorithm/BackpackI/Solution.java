@@ -38,11 +38,12 @@ public class Solution {
         boolean[] size = new boolean[m+1];
         Arrays.fill(size, false);
         size[0] = true;
-        for (int i=1;i<=len;i++)
-            for (int j=m;j>=0;j--){
-                if (j-A[i-1]>=0 && size[j-A[i-1]])
-                    size[j] = size[j-A[i-1]];
+        for (int i=1;i<=len;i++) {
+            for (int j = m; j >= 0; j--) {
+                if (j - A[i - 1] >= 0 && size[j - A[i - 1]])
+                    size[j] = size[j - A[i - 1]];
             }
+        }
 
         for (int i=m; i>=0;i--)
             if (size[i]) return i;
