@@ -64,7 +64,6 @@ public class Solution {
      */
     public TreeNode deserialize(String data) {
         // write your code here
-        // write your code here
         if (data == null || data.length() == 0) return null;
         if (data.equals("#")) return null;
 

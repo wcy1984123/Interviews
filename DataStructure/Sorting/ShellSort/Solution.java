@@ -16,11 +16,13 @@ public class Solution {
 
         int gap = 1;
         while (gap<length/3){
-            gap = 3*gap + 1;
+            gap = 3*gap + 1; // 加1是为了保证最后的 gap 为1
         }
 
         while (gap>0){
             for (int i=gap;i<length;i++){
+
+                // 每次内循环保证 gap sorted
                 for (int j=i;j>=gap && isLess(arr[j], arr[j-gap]);j-=gap){
                     exchange(arr, j, j-gap);
                 }
@@ -38,5 +40,12 @@ public class Solution {
         return a.compareTo(b) < 0;
     }
 
+    public static void main(String[] args) {
+        Integer[] arrays = new Integer[]{10, 2, 3, 4, 1, 6};
+
+        Solution.sort(arrays);
+
+        for (Integer value : arrays) System.out.println(value);
+    }
 
 }

@@ -16,7 +16,7 @@ public class Solution {
         int numberOfPasses = determineNumberOfPasses(largest);
 
         for (int p=0;p<numberOfPasses;p++){
-            int[] count = new int[radix+1];
+            int[] count = new int[radix+1]; // count 从1开始，不是0
             int[] aux = new int[length];
 
             int pow = (int)Math.pow(10, p);
@@ -27,6 +27,7 @@ public class Solution {
                 count[r+1] += count[r];
             }
 
+            // 这是 count 记录的是每个级别的 value 的开始位置
             for (int i=0;i<length;i++){
                 aux[count[(a[i]/pow)%10]++] = a[i];
             }
@@ -54,5 +55,13 @@ public class Solution {
             num=num/10;
         }
         return count;
+    }
+
+    public static void main(String[] args) {
+        Integer[] a = new Integer[]{10, 2, 3, 5, 999, 6, 8, 1};
+
+        Solution.sort(a);
+
+        for (Integer value : a) System.out.println(value);
     }
 }
