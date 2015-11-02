@@ -35,7 +35,7 @@ import java.util.Set;
 
     You would need to optimize your backtracking to pass the larger test. Could you stop backtracking earlier?
 
-    If the current candidate does not exist in all words' prefix, you could stop backtracking immediately. What kind of data structure could answer such query efficiently? Does a hash table work? Why or why not? How about a Trie? If you would like to learn how to implement a basic trie, please work on this problem: Implement Trie (Prefix Tree) first.
+    If the current candidate does not exist in all words' prefix, you could stop backtracking immediately. What kind of data structure could answer such query efficiently? Does a hash table work? Why or why not? How about a CtCILibrary.Trie? If you would like to learn how to implement a basic trie, please work on this problem: Implement CtCILibrary.Trie (Prefix Tree) first.
  */
 
 public class SolutionI {
@@ -92,13 +92,13 @@ public class SolutionI {
     }
 }
 
-//Trie Node
+//CtCILibrary.Trie Node
 class TrieNode{
     public TrieNode[] children = new TrieNode[26];
     public String item = "";
 }
 
-//Trie
+//CtCILibrary.Trie
 class Trie{
     public TrieNode root = new TrieNode();
 

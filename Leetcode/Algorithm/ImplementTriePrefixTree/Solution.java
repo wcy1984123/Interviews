@@ -99,7 +99,7 @@ public class Solution {
     }
 }
 
-// Your Trie object will be instantiated and called as such:
-// Trie trie = new Trie();
+// Your CtCILibrary.Trie object will be instantiated and called as such:
+// CtCILibrary.Trie trie = new CtCILibrary.Trie();
 // trie.insert("somestring");
 // trie.search("key");

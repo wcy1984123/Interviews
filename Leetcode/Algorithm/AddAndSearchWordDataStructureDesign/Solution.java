@@ -32,7 +32,7 @@ import java.util.Map;
 
     click to show hint.
 
-    You should be familiar with how a Trie works. If not, please work on this problem: Implement Trie (Prefix Tree) first.
+    You should be familiar with how a CtCILibrary.Trie works. If not, please work on this problem: Implement CtCILibrary.Trie (Prefix Tree) first.
  */
 
 class TrieNode{
