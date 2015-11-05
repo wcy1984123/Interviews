@@ -47,7 +47,11 @@ public class Solution {
         return color;
     }
 
-    /* Only works for 3x3 board */
+    /**
+     * Given a 3 X 3 board, determine if the current board has won by check
+     * @param board a given board with some checks
+     * @return the color of the winner
+     */
     public static Piece hasWon1(Piece[][] board) {
         for (int i = 0; i < board.length; i++) {
             if (board[i][0] != Piece.Empty && board[i][0] == board[i][1] && board[i][0] == board[i][2]) {
@@ -65,6 +69,7 @@ public class Solution {
         }
         return Piece.Empty;
     }
+
 
     /* NxN board - prioritizes code reuse */
     public static Piece hasWon2(Piece[][] board) {

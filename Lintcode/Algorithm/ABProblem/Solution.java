@@ -40,4 +40,13 @@ public class Solution {
         }
         return a;
     }
+
+    public static void main(String[] args) {
+        int a = 1;
+        int b = 2;
+        Solution test = new Solution();
+        int res = test.aplusb(a, b);
+
+        System.out.println("a + b = " + res);
+    }
 }
