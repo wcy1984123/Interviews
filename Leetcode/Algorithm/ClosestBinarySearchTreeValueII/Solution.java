@@ -35,20 +35,20 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 public class Solution {
-    // The idea is to compare the predecessors and successors of the closest node to the target, we can use two stacks to track the predecessors and successors, then like what we do in merge sort, we compare and pick the closest one to the target and put it to the result list.
+    // The idea is to compare the predecessors and successors of the closest node to
+    // the target, we can use two stacks to track the predecessors and successors,
+    // then like what we do in merge sort, we compare and pick the closest one to
+    // the target and put it to the result list.
 
-    // As we know, inorder traversal gives us sorted predecessors, whereas reverse-inorder traversal gives us sorted successors.
+    // As we know, inorder traversal gives us sorted predecessors, whereas
+    // reverse-inorder traversal gives us sorted successors.
 
-    //We can use iterative inorder traversal rather than recursion, but to keep the code clean, here is the recursion version.
+    // We can use iterative inorder traversal rather than recursion, but to keep the
+    // code clean, here is the recursion version.
     public List<Integer> closestKValues(TreeNode root, double target, int k) {
         List<Integer> res = new ArrayList<>();
         Stack<Integer> s1 = new Stack<>(); // predecessors
@@ -72,11 +72,15 @@ public class Solution {
 
     // inorder traversal
     void inorder(TreeNode root, double target, boolean reverse, Stack<Integer> stack) {
-        if (root == null) return;
+        if (root == null)
+            return;
 
         inorder(reverse ? root.right : root.left, target, reverse, stack);
+        
         // early terminate, no need to traverse the whole tree
-        if ((reverse && root.val <= target) || (!reverse && root.val > target)) return;
+        if ((reverse && root.val <= target) || (!reverse && root.val > target))
+            return;
+
         // track the value of current node
         stack.push(root.val);
         inorder(reverse ? root.left : root.right, target, reverse, stack);
