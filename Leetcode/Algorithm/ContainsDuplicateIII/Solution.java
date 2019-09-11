@@ -4,15 +4,14 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * Project: Interviews
- * Package: ContainsDuplicateIII
- * Date: 05/Sep/2015
- * Time: 21:57
- * System Time: 9:57 PM
+ * Project: Interviews Package: ContainsDuplicateIII Date: 05/Sep/2015 Time:
+ * 21:57 System Time: 9:57 PM
  */
 
 /*
-    Given an array of integers, find out whether there are two distinct indices i and j in the array such that the difference between nums[i] and nums[j] is at most t and the difference between i and j is at most k.
+ * Given an array of integers, find out whether there are two distinct indices i
+ * and j in the array such that the difference between nums[i] and nums[j] is at
+ * most t and the difference between i and j is at most k.
  */
 
 public class Solution {

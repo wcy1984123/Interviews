@@ -35,17 +35,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Definition for binary tree
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for binary tree public class TreeNode { int val; TreeNode left;
+ * TreeNode right; TreeNode(int x) { val = x; } }
  */
 
 public class Solution {
-    //bfs 层序遍历，隔层reverse tmp
+    // bfs 层序遍历，隔层reverse tmp
     public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         if (root == null) {
@@ -70,8 +65,7 @@ public class Solution {
             if (reverse) {
                 Collections.reverse(tmp);
                 reverse = false;
-            }
-            else
+            } else
                 reverse = true;
             res.add(new ArrayList<Integer>(tmp));
         }
