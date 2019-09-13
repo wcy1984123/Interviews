@@ -83,11 +83,11 @@ public class Solution {
 
         // try every sticker
         for (int i = 0; i < n; i++) {
-            // optimization
+            // Optimization: If first character in target is not in the sticker, ignore it.
             if (mp[i][target.charAt(0) - 'a'] == 0)
                 continue;
 
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder(); // store the remaining characters in target after matching the sticker.
             // apply a sticker on every character a-z
             for (int j = 0; j < 26; j++) {
                 if (tar[j] > 0)

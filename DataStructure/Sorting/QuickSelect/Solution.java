@@ -14,7 +14,8 @@ public class Solution {
     public int quickSelect(int[] array, int k) {
 
         try {
-            if (array == null || array.length == 0) throw new Exception("Array should not be empty !");
+            if (array == null || array.length == 0)
+                throw new Exception("Array should not be empty !");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -26,9 +27,12 @@ public class Solution {
         int pos = partition(array, start, end);
 
         int num = pos - start + 1;
-        if (num == k) return array[pos];
-        else if (num < k) return quickSelect(array, pos + 1, end, k - num);
-        else return quickSelect(array, start, pos - 1, k);
+        if (num == k)
+            return array[pos];
+        else if (num < k)
+            return quickSelect(array, pos + 1, end, k - num);
+        else
+            return quickSelect(array, start, pos - 1, k);
 
     }
 
@@ -59,7 +63,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int[] array = {1, 9, 3, 4, 6, 5, 7, 8, 2, 10, 11, 13, 14};
+        int[] array = { 1, 9, 3, 4, 6, 5, 7, 8, 2, 10, 11, 13, 14 };
         if (array.length % 2 == 0) {
             int res = test.quickSelect(array, array.length / 2);
             System.out.println(res);
