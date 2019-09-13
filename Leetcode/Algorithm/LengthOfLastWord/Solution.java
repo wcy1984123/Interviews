@@ -1,5 +1,3 @@
-package LengthOfLastWord;
-
 /**
  * Project: Interviews Package: LengthOfLastWord Date: 20/Mar/2015 Time: 11:40
  * System Time: 11:40 AM
@@ -18,6 +16,11 @@ package LengthOfLastWord;
  */
 
 public class Solution {
+    /**
+     * The length of last word.
+     * @param s input string.
+     * @return the length of last word.
+     */
     public int lengthOfLastWord(String s) {
         if (s == null || s.length() == 0) {
             return 0;
@@ -35,5 +38,17 @@ public class Solution {
         }
         
         return count;
+    }
+
+    /**
+     * Main program.
+     * 
+     * @param args
+     */
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int length = solution.lengthOfLastWord("Hello World!");
+
+        System.out.println("The length of last word: " + length);
     }
 }
