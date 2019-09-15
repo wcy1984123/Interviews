@@ -1,21 +1,17 @@
 package KthLargestElementInAnArray;
 
 /**
- * Project: Interviews
- * Package: KthLargestElementInAnArray
- * Date: 05/Sep/2015
- * Time: 21:52
- * System Time: 9:52 PM
+ * Project: Interviews Package: KthLargestElementInAnArray Date: 05/Sep/2015
+ * Time: 21:52 System Time: 9:52 PM
  */
 
 /*
-    Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
-
-    For example,
-    Given [3,2,1,5,6,4] and k = 2, return 5.
-
-    Note:
-    You may assume k is always valid, 1 ≤ k ≤ array's length.
+ * Find the kth largest element in an unsorted array. Note that it is the kth
+ * largest element in the sorted order, not the kth distinct element.
+ * 
+ * For example, Given [3,2,1,5,6,4] and k = 2, return 5.
+ * 
+ * Note: You may assume k is always valid, 1 ≤ k ≤ array's length.
  */
 
 public class Solution {
@@ -24,7 +20,7 @@ public class Solution {
             return 0;
         }
 
-        return getKth(nums.length - k +1, nums, 0, nums.length - 1);
+        return getKth(nums.length - k + 1, nums, 0, nums.length - 1);
     }
 
     public int getKth(int k, int[] nums, int start, int end) {

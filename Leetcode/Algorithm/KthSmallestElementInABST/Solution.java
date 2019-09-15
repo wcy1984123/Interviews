@@ -29,13 +29,8 @@ import Tree.TreeNode;
 import java.util.Stack;
 
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 public class Solution {
     public int kthSmallest(TreeNode root, int k) {
@@ -44,14 +39,14 @@ public class Solution {
         TreeNode p = root;
         int result = 0;
 
-        while(!stack.isEmpty() || p!=null){
-            if(p!=null){
+        while (!stack.isEmpty() || p != null) {
+            if (p != null) {
                 stack.push(p);
                 p = p.left;
-            }else{
+            } else {
                 TreeNode t = stack.pop();
                 k--;
-                if(k==0)
+                if (k == 0)
                     result = t.val;
                 p = t.right;
             }
