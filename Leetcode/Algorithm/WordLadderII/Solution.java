@@ -6,37 +6,25 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 /**
- * Project: Interviews
- * Package: WordLadderII
- * Date: 19/Mar/2015
- * Time: 22:08
+ * Project: Interviews Package: WordLadderII Date: 19/Mar/2015 Time: 22:08
  * System Time: 10:08 PM
  */
 
 /*
-    Given two words (start and end), and a dictionary, find all shortest transformation sequence(s) from start to end, such that:
-
-    Only one letter can be changed at a time
-    Each intermediate word must exist in the dictionary
-    For example,
-
-    Given:
-    start = "hit"
-    end = "cog"
-    dict = ["hot","dot","dog","lot","log"]
-    Return
-      [
-        ["hit","hot","dot","dog","cog"],
-        ["hit","hot","lot","log","cog"]
-      ]
-    Note:
-    All words have the same length.
-    All words contain only lowercase alphabetic characters.
+ * Given two words (start and end), and a dictionary, find all shortest
+ * transformation sequence(s) from start to end, such that:
+ * 
+ * Only one letter can be changed at a time Each intermediate word must exist in
+ * the dictionary For example,
+ * 
+ * Given: start = "hit" end = "cog" dict = ["hot","dot","dog","lot","log"]
+ * Return [ ["hit","hot","dot","dog","cog"], ["hit","hot","lot","log","cog"] ]
+ * Note: All words have the same length. All words contain only lowercase
+ * alphabetic characters.
  */
 
 public class Solution {
-    public ArrayList<ArrayList<String>> findLadders(String start, String end,
-                                                    HashSet<String> dict) {
+    public ArrayList<ArrayList<String>> findLadders(String start, String end, HashSet<String> dict) {
 
         // -------------------------------------Declare variables-------------------------------------//
         // Word and its immediate parents (saved in HashSet) on the shortest path
@@ -45,8 +33,9 @@ public class Solution {
         LinkedList<String> queue = new LinkedList<String>(); // Strings waiting in the queue
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>(); // Final results
 
-        //------------------------------------- Boundary Check-------------------------------------//
-        if (start == null || end == null || start.length() != end.length())  return result;
+        // ------------------------------------- Boundary Check-------------------------------------//
+        if (start == null || end == null || start.length() != end.length())
+            return result;
 
         // Path from start to the current word
         HashSet<String> path = new HashSet<String>();
@@ -55,7 +44,7 @@ public class Solution {
         level.put(start, 1);
         queue.add(start);
 
-        //------------------------------------- Main Algorithm -------------------------------------//
+        // ------------------------------------- Main Algorithm -------------------------------------//
         while (!queue.isEmpty()) {
             String head = queue.remove();
             char[] chars = head.toCharArray();
@@ -95,13 +84,13 @@ public class Solution {
                     chars[i] = old;
                 } // for end
             } // for end
-        }  // while end
+        } // while end
         return result;
     }
 
-    //-------------------------------------- TraceBack -------------------------------------------//
-    private ArrayList<ArrayList<String>> backtrace(String end,
-                                                   HashMap<String, HashSet<String>> visited, ArrayList<String> path) {
+    // -------------------------------------- TraceBack -------------------------------------------//
+    private ArrayList<ArrayList<String>> backtrace(String end, HashMap<String, HashSet<String>> visited,
+            ArrayList<String> path) {
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
         ArrayList<String> entry = new ArrayList<String>(path);
         entry.add(0, end);

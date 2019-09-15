@@ -1,34 +1,27 @@
 package WordSearch;
 
 /**
- * Project: Interviews
- * Package: WordSearch
- * Date: 20/Mar/2015
- * Time: 10:07
- * System Time: 10:07 AM
+ * Project: Interviews Package: WordSearch Date: 20/Mar/2015 Time: 10:07 System
+ * Time: 10:07 AM
  */
 
 /*
-    Given a 2D board and a word, find if the word exists in the grid.
-
-    The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.
-
-    For example,
-    Given board =
-
-    [
-      ["ABCE"],
-      ["SFCS"],
-      ["ADEE"]
-    ]
-    word = "ABCCED", -> returns true,
-    word = "SEE", -> returns true,
-    word = "ABCB", -> returns false.
+ * Given a 2D board and a word, find if the word exists in the grid.
+ * 
+ * The word can be constructed from letters of sequentially adjacent cell, where
+ * "adjacent" cells are those horizontally or vertically neighboring. The same
+ * letter cell may not be used more than once.
+ * 
+ * For example, Given board =
+ * 
+ * [ ["ABCE"], ["SFCS"], ["ADEE"] ] word = "ABCCED", -> returns true, word =
+ * "SEE", -> returns true, word = "ABCB", -> returns false.
  */
 
 public class Solution {
     private int row;
     private int col;
+
     public boolean exist(char[][] board, String word) {
         row = board.length;
         col = board[0].length;
@@ -42,8 +35,7 @@ public class Solution {
         return false;
     }
 
-    private boolean dfs(char[][] board, String word, int index, int rowindex,
-                        int colindex, boolean[][] visited) {
+    private boolean dfs(char[][] board, String word, int index, int rowindex, int colindex, boolean[][] visited) {
         if (index == word.length())
             return true;
         if (rowindex < 0 || colindex < 0 || rowindex >= row || colindex >= col)
@@ -53,8 +45,7 @@ public class Solution {
         if (board[rowindex][colindex] != word.charAt(index))
             return false;
         visited[rowindex][colindex] = true;
-        boolean res = dfs(board, word, index + 1, rowindex - 1, colindex,
-                visited)
+        boolean res = dfs(board, word, index + 1, rowindex - 1, colindex, visited)
                 || dfs(board, word, index + 1, rowindex + 1, colindex, visited)
                 || dfs(board, word, index + 1, rowindex, colindex + 1, visited)
                 || dfs(board, word, index + 1, rowindex, colindex - 1, visited);
