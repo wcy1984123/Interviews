@@ -4,18 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Project: Interviews
- * Package: LRUCache
- * Date: 19/Mar/2015
- * Time: 09:21
- * System Time: 9:21 AM
+ * Project: Interviews Package: LRUCache Date: 19/Mar/2015 Time: 09:21 System
+ * Time: 9:21 AM
  */
 
 /*
-    Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and set.
-
-    get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
-    set(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
+ * Design and implement a data structure for Least Recently Used (LRU) cache. It
+ * should support the following operations: get and set.
+ * 
+ * get(key) - Get the value (will always be positive) of the key if the key
+ * exists in the cache, otherwise return -1. set(key, value) - Set or insert the
+ * value if the key is not already present. When the cache reached its capacity,
+ * it should invalidate the least recently used item before inserting a new
+ * item.
  */
 
 public class Solution {
@@ -94,7 +95,8 @@ public class Solution {
             } else {
                 map.remove(tail.key);
                 tail = tail.prev;
-                if (tail != null) tail.next = null;
+                if (tail != null)
+                    tail.next = null;
                 setHead(node);
                 map.put(key, node);
 
@@ -103,7 +105,7 @@ public class Solution {
     }
 }
 
-class DoubleLinkedNode{
+class DoubleLinkedNode {
     DoubleLinkedNode prev;
     DoubleLinkedNode next;
     int key;

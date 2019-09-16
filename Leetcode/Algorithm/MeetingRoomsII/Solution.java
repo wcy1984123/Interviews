@@ -24,17 +24,14 @@ import java.util.List;
 import Interval.Interval;
 
 /**
- * Definition for an interval.
- * public class Interval {
- *     int start;
- *     int end;
- *     Interval() { start = 0; end = 0; }
- *     Interval(int s, int e) { start = s; end = e; }
- * }
+ * Definition for an interval. public class Interval { int start; int end;
+ * Interval() { start = 0; end = 0; } Interval(int s, int e) { start = s; end =
+ * e; } }
  */
 public class Solution {
     public int minMeetingRooms(Interval[] intervals) {
-        if(intervals.length <= 1) return intervals.length;
+        if (intervals.length <= 1)
+            return intervals.length;
 
         // sort the interval[] by start time
         Arrays.sort(intervals, new Comparator<Interval>() {
@@ -47,12 +44,12 @@ public class Solution {
         List<Integer> list = new LinkedList<Integer>();
 
         // for each intervals in Interval[], grouping them
-        for(int i = 0; i < intervals.length; i++){
+        for (int i = 0; i < intervals.length; i++) {
             int index = findAMeetingRoom(list, intervals[i]);
-            if(index == -1){
+            if (index == -1) {
                 // if no room was found, add a new one
                 list.add(intervals[i].end);
-            }else{
+            } else {
                 // if an appropriate room was found, update the end time
                 list.set(index, intervals[i].end);
             }
@@ -60,9 +57,9 @@ public class Solution {
         return list.size();
     }
 
-    private int findAMeetingRoom(List<Integer> list, Interval interval){
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i) <= interval.start)
+    private int findAMeetingRoom(List<Integer> list, Interval interval) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) <= interval.start)
                 return i;
         }
         return -1;
