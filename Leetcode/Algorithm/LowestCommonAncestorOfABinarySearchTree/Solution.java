@@ -26,22 +26,17 @@ package LowestCommonAncestorOfABinarySearchTree;
 import Tree.TreeNode;
 
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 
 public class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root == null) {
+        if (root == null) {
             return null;
         }
 
-        if(root.val > p.val && root.val > q.val) {
+        if (root.val > p.val && root.val > q.val) {
             // both targets are left
             return lowestCommonAncestor(root.left, p, q);
         } else if (root.val < p.val && root.val < q.val) {
