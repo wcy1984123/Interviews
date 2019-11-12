@@ -29,7 +29,7 @@ public class KMeans {
      * @param dataset The dataset.
      * @return Cluster centers.
      */
-    public static List<double[]> kMeans(List<double[]> centers, List<DataPont> dataset ) {
+    public static List<double[]> kMeans(List<double[]> centers, List<DataPoint> dataset ) {
         // Get cluster sizes.
         int k = centers.length;
 
@@ -61,6 +61,7 @@ public class KMeans {
                     noChange = false;
                 }
 
+                dataPoint.clusterLabel = closestCluster;
                 clustering.get( closestCluster ).add( dataPoint.data );
             }
 
@@ -71,7 +72,7 @@ public class KMeans {
             // Calculate new centers and clear clustering lists
             List<double[]> newCenters = new ArrayList<double[]>();
             for ( int i = 0; i < k; i++ ) {
-                newCenters.add(calculateCenter( clustering.get( i ), k));
+                newCenters.add(calculateCenter( clustering.get( i ), clustering.get(i).size()));
                 clustering.get( i ).clear();
             }
             centers = newCenters;
@@ -131,7 +132,7 @@ public class KMeans {
         System.out.println("K-Means Machine Learning");
     }
 
-    private class DataPont {
+    private class DataPoint {
         double[] data;
         int clusterLabel = -1;
     }
