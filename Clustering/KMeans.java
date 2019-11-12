@@ -29,7 +29,7 @@ public class KMeans {
      * @param dataset The dataset.
      * @return Cluster centers.
      */
-    public static List<double[]> kMeans(List<double[]> centers, List<double[]> dataset ) {
+    public static List<double[]> kMeans(List<double[]> centers, List<DataPont> dataset ) {
         // Get cluster sizes.
         int k = centers.length;
 
@@ -41,31 +41,32 @@ public class KMeans {
 
         // K-means algorithm
         int repetitions = 100; // The maximum of iterations.
-        double preTotalDistance = Integer.MAX_VALUE;
-        double delta = 0.00001;
-        double distanceDifference = Integer.MAX_VALUE;
-        while ( repetitions-- >= 0 && distanceDifference > delta) {
-            double currentTotalDistance = 0.0;
+        while ( repetitions-- >= 0) {
+            bool noChange = true;
 
             // Assign points to clusters
-            for ( double[] point : dataset ) {
-                double minDistance = distance( point, centers.get(0) );
+            for ( DataPoint dataPoint : dataset ) {
+                double minDistance = distance( dataPoint.data, centers.get(0) );
 
                 int closestCluster = 0;
                 for ( int i = 1; i < k; i++ ) {
-                    double distance = distance( point, centers.get(i) );
+                    double distance = distance( dataPoint.data, centers.get(i) );
                     if ( distance < minDistance ) {
                         closestCluster = i;
                         minDistance = distance;
                     }
                 }
 
-                currentTotalDistance += minDistance;
-                clustering.get( closestCluster ).add( point );
+                if (dataPoint.clusterLabel != closestCluster) {
+                    noChange = false;
+                }
+
+                clustering.get( closestCluster ).add( dataPoint.data );
             }
 
-            distanceDifference = Math.abs(currentTotalDistance - preTotalDistance);
-            preTotalDistance = currentTotalDistance;
+            if (noChange) {
+                return centers;
+            }
 
             // Calculate new centers and clear clustering lists
             List<double[]> newCenters = new ArrayList<double[]>();
@@ -128,5 +129,10 @@ public class KMeans {
      */
     public static void main(String[] args) {
         System.out.println("K-Means Machine Learning");
+    }
+
+    private class DataPont {
+        double[] data;
+        int clusterLabel = -1;
     }
 }
